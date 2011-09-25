@@ -1,0 +1,146 @@
+<!--
+This is Waker start point. From here the lib will load all content and adjust the page
+layout accordly.
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+
+	<!--Prevent pinch to zoom on iOS devices-->
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;" />
+
+	<!--Allow saving as a web app on the home screen on iOS Devices (doesn't apply in Baker)-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<!--If the page is saved as a web app, the statusbar will be black-translucent (doesn't apply in Baker)-->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<!--Prevent phone number detection on iOS devices-->
+	<meta name="format-detection" content="telephone=no" />
+
+	<!--Title. The content of the title is displayed on the loading screen on iOS devices-->
+	<title>{@TITLE}</title>
+
+	<link href="book/styles/styles.css" rel="stylesheet" type="text/css" />
+	<link href="book/styles/dossiers/02.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="book/js/jquery-1.5.min.js" ></script>
+	<script type="text/javascript" src="book/js/Hyphenator.js" ></script>
+	<script type="text/javascript" src="book/js/waker.js"></script>	
+
+	<!--Card Flip Effect-->
+	<script type="text/javascript" src="book/js/jquery-css-transform.js"></script>
+	<script type="text/javascript" src="book/js/rotate3Di.js"></script>
+	
+	<!--Audio Player-->
+	<script type="text/javascript" src="book/js/jquery.jplayer.min.js"></script>
+	
+	<!--Mandatory JavaScripts (Uncomment if not used to speed up performance)
+	<script src="js/jquery.touchSwipe-1.2.1.js" type="text/javascript"></script>
+	-->
+</head>
+
+<body>
+
+<!--
+############################################################################
+"Table of content" in navigation bar #######################################
+############################################################################
+-->
+
+<div class="nav-bar">
+	<div class="nav-bar-container">
+        <a href="#toc" class="nav-button toc">
+        	<div class="toc-label">Content</div>
+		
+	        <div class="toc-list">
+				<!--Include "Table of content" from external file-->
+				<div id="includeTOC" csi:src="inc/toc.html"></div>
+			</div>
+		</a>
+	</div>
+</div>
+
+<!--
+############################################################################
+End "Table of content" in navigation bar ###################################
+############################################################################
+-->
+
+
+<!--
+############################################################################
+Start dossier navigation in navigation bar #################################
+############################################################################
+-->
+
+<!--Include the small logo and the cover link-->
+<div id="includeLogoAndCoverlink">
+	<!--Logo, which is placed in the middle of the navigation bar-->
+	<div class="logo-small"><img src="images/nav/logo-small.png" width="57" height="16" alt="logo" /></div>
+	
+	<!--Cover Link-->
+	<a href="javascript:void()" onclick="W.coverPage()" class="nav-button cover">
+		<div class="nav-button-text">Cover</div>
+	</a>
+</div>
+
+<!--Link to the next dossier-->
+<a href="javascript:void()" onclick="W.nextPage()" class="nav-button next">
+	<div class="nav-button-text">Next page</div>
+</a>
+
+<!--Link to the previous dossier-->
+<a href="javascript:void()" onclick="W.prevPage()" class="nav-button prev">
+	<div class="nav-button-text">Previous page</div>
+</a>
+
+<!--Implementing the Dossier-Number-->
+<div id="dossier-number" class="dossier-number"><p>02</p></div>
+
+<!--Navigation bar edges-->
+<div class="edge-left"></div>
+<div class="edge-right"></div>
+
+<!--
+############################################################################
+End dossier navigation in navigation bar ###################################
+############################################################################
+-->
+
+<!--Enable text hyphenation with Hyphenator.js-->
+<div id="content" class="hyphenate">
+
+	<!--Dossier start image-->
+	<div class="dossier-start-bg">
+		<!--(if you want to place something on top of the picture, place it here-->
+	</div>
+	
+	<!--Arrow which indicates the start of the text-->
+	<div class="dossier-headline-arrow"><img src="book/images/dossier-headline-arrow.png" /></div>
+	
+	<div class="content-element">
+		<div class="starting-headline">
+			<h1>Embedding YouTube Videos, the card-flip effect and playing sound</h1>
+		</div>
+	</div>
+	
+	<div class="content-element">
+		<!--Main content-->
+		<div class="large-column float-left">
+		     <p>Class: "large-column float-left"<br />Morbi semper ultrices porta. Aenean dignissim, sapien eget sodales mollis, massa urna malesuada elit, sit amet vulputate justo augue in massa. Praesent mattis accumsan blandit. Mauris nec enim ante. Sed fringilla interdum eros, nec lacinia turpis iaculis vel. Vestibulum leo ipsum, consequat a dignissim sit amet, egestas in urna. Donec nisl velit, pulvinar id ullamcorper vitae, imperdiet et leo. Donec ultricies cursus varius. Pellentesque elit arcu, pulvinar in fermentum non, faucibus eu quam. Suspendisse mollis aliquam sagittis. Vestibulum pellentesque accumsan arcu, vitae mattis tellus luctus id. Vivamus sed condimentum leo.</p>
+		     <p>Donec molestie dui et nisl posuere volutpat rhoncus mauris porta. Etiam blandit dui at leo rutrum sed tempus erat rutrum. Nunc ac mauris risus, sed sagittis elit. Nulla sed mi at neque aliquam rutrum. Donec sed est in justo commodo convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut tellus justo, scelerisque vitae accumsan tempus, volutpat vel risus. Pellentesque vitae elit et enim tristique porta porttitor at dolor. Suspendisse elementum mattis congue. Proin elementum, tellus sit amet ullamcorper cursus, augue libero hendrerit massa, placerat viverra velit tellus nec urna.</p>
+		</div>
+	</div>
+</div>
+  
+<div class="footer">
+    <div class="content-element">
+    	<p>All images: © Florian Franke, <a href="http://www.franke-photography.com">http://www.franke-photography.com</a></p>
+    </div>
+</div>
+
+</body>
+</html>
