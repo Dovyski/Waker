@@ -82,25 +82,17 @@ Start dossier navigation in navigation bar #################################
 	<div class="logo-small"><img src="images/nav/logo-small.png" width="57" height="16" alt="logo" /></div>
 	
 	<!--Cover Link-->
-	<a href="javascript:void()" onclick="W.coverPage()" class="nav-button cover">
+	<a href="javascript:void()" onclick="Waker.coverPage()" class="nav-button cover">
 		<div class="nav-button-text">Cover</div>
 	</a>
 </div>
 
-<!--Link to the next dossier-->
-<a href="javascript:void()" onclick="W.nextPage()" class="nav-button next">
-	<div class="nav-button-text">Next page</div>
-</a>
+<!-- Links to the prev/next dossier -->
+<a href="javascript:void()" onclick="Waker.nextPage()" class="nav-button next"><div class="nav-button-text">Next page</div></a>
+<a href="javascript:void()" onclick="Waker.prevPage()" class="nav-button prev"><div class="nav-button-text">Previous page</div></a>
 
-<!--Link to the previous dossier-->
-<a href="javascript:void()" onclick="W.prevPage()" class="nav-button prev">
-	<div class="nav-button-text">Previous page</div>
-</a>
-
-<!--Implementing the Dossier-Number-->
-<div id="dossier-number" class="dossier-number"><p>02</p></div>
-
-<!--Navigation bar edges-->
+<!-- Dossier number and fancy page edges -->
+<div id="dossier-number" class="dossier-number"><p>NN</p></div>
 <div class="edge-left"></div>
 <div class="edge-right"></div>
 
@@ -121,19 +113,7 @@ End dossier navigation in navigation bar ###################################
 	<!--Arrow which indicates the start of the text-->
 	<div class="dossier-headline-arrow"><img src="book/images/dossier-headline-arrow.png" /></div>
 	
-	<div class="content-element">
-		<div class="starting-headline">
-			<h1>Embedding YouTube Videos, the card-flip effect and playing sound</h1>
-		</div>
-	</div>
-	
-	<div class="content-element">
-		<!--Main content-->
-		<div class="large-column float-left">
-		     <p>Class: "large-column float-left"<br />Morbi semper ultrices porta. Aenean dignissim, sapien eget sodales mollis, massa urna malesuada elit, sit amet vulputate justo augue in massa. Praesent mattis accumsan blandit. Mauris nec enim ante. Sed fringilla interdum eros, nec lacinia turpis iaculis vel. Vestibulum leo ipsum, consequat a dignissim sit amet, egestas in urna. Donec nisl velit, pulvinar id ullamcorper vitae, imperdiet et leo. Donec ultricies cursus varius. Pellentesque elit arcu, pulvinar in fermentum non, faucibus eu quam. Suspendisse mollis aliquam sagittis. Vestibulum pellentesque accumsan arcu, vitae mattis tellus luctus id. Vivamus sed condimentum leo.</p>
-		     <p>Donec molestie dui et nisl posuere volutpat rhoncus mauris porta. Etiam blandit dui at leo rutrum sed tempus erat rutrum. Nunc ac mauris risus, sed sagittis elit. Nulla sed mi at neque aliquam rutrum. Donec sed est in justo commodo convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut tellus justo, scelerisque vitae accumsan tempus, volutpat vel risus. Pellentesque vitae elit et enim tristique porta porttitor at dolor. Suspendisse elementum mattis congue. Proin elementum, tellus sit amet ullamcorper cursus, augue libero hendrerit massa, placerat viverra velit tellus nec urna.</p>
-		</div>
-	</div>
+	<div id="page-content"></div>	
 </div>
   
 <div class="footer">

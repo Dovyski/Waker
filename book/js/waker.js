@@ -20,7 +20,17 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-var W = new function() {
+var Waker = new function() {
+	var mCurrentPage = 0;
+	
+	var loadPage = function(thePage) {
+		$('#page-content').load('./content/' + thePage, function() {
+			  alert('Load was performed.');
+		});
+		$('#dossier-number').html('<p>' + mCurrentPage + '</p>');
+		//$('.logo-small').hide();
+	};
+	
 	this.nextPage = function() {
 		
 	};
@@ -30,10 +40,10 @@ var W = new function() {
 	};
 	
 	this.coverPage = function() {
-		
+		loadPage("sample01.html");
 	};
 };
 
 $(function() {
-	
+	Waker.coverPage();
 });
