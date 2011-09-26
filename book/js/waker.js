@@ -37,19 +37,28 @@ var Waker = new function() {
 		
 		if(mCurrentPage == 0) {
 			$('#nav-prev').fadeOut();
+			$('#nav-cover').fadeOut();
 			$('#dossier-number').fadeOut();
 		} else {
 			$('#nav-prev').fadeIn();
+			$('#nav-cover').fadeIn();
 			$('#dossier-number').html("<p>"+mCurrentPage+"</p>").fadeIn();
 		}
 	};
 	
-	var loadPage = function(thePage) {
-		$('#page-content').load(Waker.CONTENT_FOLDER + thePage, function() {
-			  //alert('Load was performed.');
+	var updateHeadlineImage = function() {
+		$('#page-content img.img-headline').each(function(theIndex) {
+			$('#headline').css("background-image", "url("+$(this).attr("src")+")");
+			$(this).remove();
 		});
-		
-		updateNavBar();
+	};
+	
+	var loadPage = function(thePage) {
+		// TODO: loading anim?
+		$('#page-content').load(Waker.CONTENT_FOLDER + thePage, function() {
+			updateNavBar();
+			updateHeadlineImage();
+		});
 	};
 	
 	var indexLoaded = function(theData) {
