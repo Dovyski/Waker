@@ -21,29 +21,95 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 var Waker = new function() {
-	var mCurrentPage = 0;
+	this.CONTENT_FOLDER = "./content/";
+	
+	var mCurrentPage 	= 0;
+	var mPages 			= [];
+	
+	var updateNavBar = function() {
+		//$('.logo-small').hide();
+		
+		if(mCurrentPage == mPages.length - 1) {
+			$('#nav-next').fadeOut();
+		} else {
+			$('#nav-next').fadeIn();
+		}
+		
+		if(mCurrentPage == 0) {
+			$('#nav-prev').fadeOut();
+			$('#dossier-number').fadeOut();
+		} else {
+			$('#nav-prev').fadeIn();
+			$('#dossier-number').html("<p>"+mCurrentPage+"</p>").fadeIn();
+		}
+	};
 	
 	var loadPage = function(thePage) {
-		$('#page-content').load('./content/' + thePage, function() {
-			  alert('Load was performed.');
+		$('#page-content').load(Waker.CONTENT_FOLDER + thePage, function() {
+			  //alert('Load was performed.');
 		});
-		$('#dossier-number').html('<p>' + mCurrentPage + '</p>');
-		//$('.logo-small').hide();
+		
+		updateNavBar();
+	};
+	
+	var indexLoaded = function(theData) {
+		mPages.splice(0);
+		
+		$("body").append('<div id="cindex" style="display: none;">' + theData + '</div>');
+		
+		$("#cindex a").each(function(theIndex) {
+			var aObj = $(this);
+			mPages[theIndex] = {url: aObj.attr("href"), name: aObj.text()};
+			console.info("Article #"+theIndex+" added (url: " + mPages[theIndex].url + ", name: " + mPages[theIndex].name + ")");
+		});
+		
+		Waker.coverPage();
+	};
+	
+	var indexNotLoaded = function() {
+		// TODO: do something better...
+		alert("Index not loaded!");
 	};
 	
 	this.nextPage = function() {
+		var aRet = false;
 		
+		if(mCurrentPage < mPages.length - 1) {
+			mCurrentPage++;
+			loadPage(mPages[mCurrentPage].url);
+			aRet = true;
+		}
+		
+		return aRet;
 	};
 	
 	this.prevPage = function() {
+		var aRet = false;
 		
+		if(mCurrentPage > 0) {
+			mCurrentPage--;
+			loadPage(mPages[mCurrentPage].url);
+			aRet = true;
+		}
+		
+		return aRet;
 	};
 	
 	this.coverPage = function() {
-		loadPage("sample01.html");
+		mCurrentPage = 0;
+		loadPage(mPages[mCurrentPage].url);
+	};
+	
+	this.init = function() {
+		updateNavBar();
+		
+		$.ajax({
+			url: Waker.CONTENT_FOLDER + "index.html",
+			context: document.body,
+		}).success(indexLoaded).error(indexNotLoaded);
 	};
 };
 
 $(function() {
-	Waker.coverPage();
+	Waker.init();
 });
