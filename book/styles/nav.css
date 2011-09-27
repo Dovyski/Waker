@@ -40,13 +40,12 @@ Navigation bar
     background-color: #000;
     opacity: 0.9;
     z-index: 999;
-    -webkit-transition: opacity 0.2s ease-out;
-    -webkit-transform: translate3d(0px,0px,0px);
 }
 
 .nav-bar-container {
     width: 896px;
-    margin: auto
+    margin: auto;
+    position: relative;
 }
 
 
@@ -95,11 +94,7 @@ Navigation buttons
     overflow: visible;
 
 }
-.nav-button div.toc-list,
-.nav-button span.toc-dossier {    display: none }
 
-.nav-button:hover div.toc-list,
-.nav-button:hover span.toc-dossier {    display: block }
 .nav-button:hover div {
     display: block;
     text-align: left
@@ -227,6 +222,10 @@ Table of content on desktop browsers
 */
 
 .toc-list {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 20px;
     width: 420px; height: 420px;
     margin-top: 6px; margin-right: -10px;
     background-color: #000;

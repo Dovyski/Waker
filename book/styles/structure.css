@@ -87,11 +87,12 @@ px      68    160    252    344    436    528    620    712    804    896
     height: 648px;
     padding-top: 120px;
     background-color: #efefef;
-    background-image: url(../../images/dossier-zuvielaltes/dossier-start.jpg);
+    /*background-image: url(../../images/dossier-zuvielaltes/dossier-start.jpg);*/
     background-size: cover;
     -moz-background-size: cover;
     background-repeat: no-repeat;
 }
+
 .footer {
     width: 100%;
     clear: both;

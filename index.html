@@ -52,14 +52,36 @@ layout accordly.
 
 <div class="nav-bar">
 	<div class="nav-bar-container">
-        <a href="#toc" class="nav-button toc">
-        	<div class="toc-label">Content</div>
-		
-	        <div class="toc-list">
-				<!--Include "Table of content" from external file-->
-				<div id="includeTOC" csi:src="inc/toc.html"></div>
+		<a href="javascript:void(0)" class="nav-button toc" onclick="Waker.toggleToc()"><div class="toc-label">Index</div></a>
+		<div id="toc" class="toc-list">
+			<div class="hyphenate">
+				<a class="toc-dossier" href="001.html">
+					<div class="toc-dossier-number">C</div> <!--  <img class="toc-thumb" src="images/cover/toc-thumb.jpg" />-->
+					<h1>Cover</h1>
+					<p>Issue #1</p> </a>
+				<!--Link toc-dossier-->
+
+				<a class="toc-dossier" href="01.html">
+					<div class="toc-dossier-number">1</div> <!-- <img class="toc-thumb" src="images/dossier-01/toc-thumb.jpg" />-->
+					<h1>Dossier 1</h1>
+					<p>Images &amp; slideshow</p> </a>
+				<!--Link toc-dossier-->
+
+				<a class="toc-dossier" href="02.html">
+					<div class="toc-dossier-number">2</div> <!-- <img class="toc-thumb" src="images/dossier-02/toc-thumb.jpg" />-->
+					<h1>Dossier 2</h1>
+					<p>YouTube, card-flip and sounds</p> </a>
+				<!--Link toc-dossier-->
+
+				<a class="toc-dossier" href="03.html">
+					<div class="toc-dossier-number">3</div> <!-- <img class="toc-thumb" src="images/dossier-03/toc-thumb.jpg" />-->
+					<h1>Dossier 3</h1>
+					<p>Structure &amp; Columns</p> </a>
+				<!--Link toc-dossier-->
+
 			</div>
-		</a>
+			<!--Div Hyphenate-->
+		</div>
 	</div>
 </div>
 
@@ -76,21 +98,18 @@ Start dossier navigation in navigation bar #################################
 ############################################################################
 -->
 
-<!--Include the small logo and the cover link-->
-<div id="navbar">
-	<!--Logo, which is placed in the middle of the navigation bar-->
-	<div class="logo-small"><img src="book/images/nav/logo-small.png" width="57" height="16" alt="logo" /></div>
+<!--Logo, which is placed in the middle of the navigation bar-->
+<div class="logo-small"><img src="book/images/nav/logo-small.png" width="57" height="16" alt="logo" /></div>
+
+<!-- Links to cover, prev and next dossier -->
+<a href="javascript:void(0)" onclick="Waker.coverPage()" class="nav-button cover" id="nav-cover"><div class="nav-button-text">Cover</div></a>
+<a href="javascript:void(0)" onclick="Waker.nextPage()" class="nav-button next" id="nav-next"><div class="nav-button-text">Next page</div></a>
+<a href="javascript:void(0)" onclick="Waker.prevPage()" class="nav-button prev" id="nav-prev"><div class="nav-button-text">Previous page</div></a>
 	
-	<!-- Links to cover, prev and next dossier -->
-	<a href="javascript:void(0)" onclick="Waker.coverPage()" class="nav-button cover" id="nav-cover"><div class="nav-button-text">Cover</div></a>
-	<a href="javascript:void(0)" onclick="Waker.nextPage()" class="nav-button next" id="nav-next"><div class="nav-button-text">Next page</div></a>
-	<a href="javascript:void(0)" onclick="Waker.prevPage()" class="nav-button prev" id="nav-prev"><div class="nav-button-text">Previous page</div></a>
-	
-	<!-- Dossier number and fancy page edges -->
-	<div id="dossier-number" class="dossier-number"><p>NN</p></div>
-	<div class="edge-left"></div>
-	<div class="edge-right"></div>
-</div>
+<!-- Dossier number and fancy page edges -->
+<div id="dossier-number" class="dossier-number"><p>NN</p></div>
+<div class="edge-left"></div>
+<div class="edge-right"></div>	
 
 <!--
 ############################################################################

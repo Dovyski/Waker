@@ -109,6 +109,10 @@ var Waker = new function() {
 		loadPage(mPages[mCurrentPage].url);
 	};
 	
+	this.toggleToc = function() {
+		$("#toc").fadeToggle();
+	};
+	
 	this.init = function() {
 		updateNavBar();
 		
