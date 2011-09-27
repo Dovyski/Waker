@@ -25,6 +25,21 @@ var Waker = new function() {
 	
 	var mCurrentPage 	= 0;
 	var mPages 			= [];
+
+	var buildIndexWindow = function() {
+		var i, aToc = $("#toc div");
+		
+		aToc.empty();
+		
+		for(i = 0; i < mPages.length; i++) {
+			aToc.append('<a class="toc-dossier" href="javascript:void(0)" onclick="Waker.gotoPage('+i+')">' +
+							'<div class="toc-dossier-number">'+(i == 0 ? "C" : i)+'</div>'+
+							'<img class="toc-thumb" src="'+mPages[i].thumb+'" />'+
+							'<h1>'+mPages[i].title+'</h1>'+
+							'<p>'+mPages[i].desc+'</p>'+
+						'</a>');
+		}
+	};
 	
 	var updateNavBar = function() {
 		//$('.logo-small').hide();
@@ -55,6 +70,8 @@ var Waker = new function() {
 	
 	var loadPage = function(thePage) {
 		// TODO: loading anim?
+		$('#toc').fadeOut();
+		
 		$('#page-content').load(Waker.CONTENT_FOLDER + thePage, function() {
 			updateNavBar();
 			updateHeadlineImage();
@@ -68,10 +85,16 @@ var Waker = new function() {
 		
 		$("#cindex a").each(function(theIndex) {
 			var aObj = $(this);
-			mPages[theIndex] = {url: aObj.attr("href"), name: aObj.text()};
-			console.info("Article #"+theIndex+" added (url: " + mPages[theIndex].url + ", name: " + mPages[theIndex].name + ")");
+			mPages[theIndex] = {
+					url: 	aObj.attr("href"),
+					title: 	aObj.attr("title"),
+					desc: 	aObj.text(),
+					thumb: 	aObj.data().thumb
+			};
+			console.info("Article #"+theIndex+" added "+JSON.stringify(mPages[theIndex]));
 		});
 		
+		buildIndexWindow();
 		Waker.coverPage();
 	};
 	
@@ -108,6 +131,18 @@ var Waker = new function() {
 		mCurrentPage = 0;
 		loadPage(mPages[mCurrentPage].url);
 	};
+	
+	this.gotoPage = function(theNumber) {
+		var aRet = false;
+		
+		if(theNumber >= 0 && theNumber <= mPages.length - 1) {
+			mCurrentPage = theNumber;
+			loadPage(mPages[mCurrentPage].url);
+			aRet = true;
+		}
+		
+		return aRet;
+	}
 	
 	this.toggleToc = function() {
 		$("#toc").fadeToggle();
