@@ -1,6 +1,14 @@
 <!--
-This is Waker start point. From here the lib will load all content and adjust the page
-layout accordly.
+
+This is Waker starting point.
+
+From here Waker will load all content pages and adjust the layout accordly. In order to
+create content pages, just create an html file in the same directory of this file (index.html)
+and add it to the config.html file (where Waker will look for information regarding pages order, content, etc).
+
+NOTICE: you SHOULD NOT modify this file unless you know exactly what you are doing. Waker relies on
+this file to load and adjust page content.
+
 -->
 
 <!DOCTYPE html>
@@ -80,7 +88,7 @@ Start dossier navigation in navigation bar #################################
 <a href="javascript:void(0)" onclick="Waker.prevPage()" class="nav-button prev" id="nav-prev"><div class="nav-button-text">Previous page</div></a>
 	
 <!-- Dossier number and fancy page edges -->
-<div id="dossier-number" class="dossier-number"><p>NN</p></div>
+<div id="dossier-number" class="dossier-number"><p><!-- Number will be loaded into this div --></p></div>
 <div class="edge-left"></div>
 <div class="edge-right"></div>	
 
@@ -95,7 +103,16 @@ End dossier navigation in navigation bar ###################################
 
 	<!--Dossier start image-->
 	<div class="dossier-start-bg" id="headline">
-		<!--(if you want to place something on top of the picture, place it here-->
+		<!--
+			This div contains the big image used as the dossier headline. The image is
+			placed as the div background. If Waker is loading the cover page, its content
+			will be placed into this div, overlaying the headline background image.
+			
+			For all other pages loaded by Waker, the content will be loaded into the "page-content" div
+			and this div here will feature the headline image. In order to specify a headline image, 
+			the loaded page must have an img tag contaning the class "img-headline". If it is found,
+			the img src attribute will be used as the headlined background image.
+		-->
 	</div>
 	
 	<!--Arrow which indicates the start of the text-->
