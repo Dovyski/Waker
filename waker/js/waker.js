@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 var Waker = new function() {
-	this.CONTENT_FOLDER = "./content/";
+	this.CONTENT_FOLDER = "./";
 	
 	var mCurrentPage 	= 0;
 	var mLastViewedPage = 0;	

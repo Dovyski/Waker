@@ -54,6 +54,10 @@ body {    overflow-x: hidden }
     width: 30px; height: 30px
 }
 
+.dossier-number {
+	display: none;
+}
+
 /* Selection colours (easy to forget) */
 ::selection {    background: #d3f9f2 }
 ::-moz-selection {    background: #d3f9f2 }
