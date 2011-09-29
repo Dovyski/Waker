@@ -85,7 +85,7 @@ px      68    160    252    344    436    528    620    712    804    896
 
 .dossier-start-bg {
     height: 648px;
-    padding-top: 120px;
+    padding-top: 28px;
     background-color: #efefef;
     /*background-image: url(../../images/dossier-zuvielaltes/dossier-start.jpg);*/
     background-size: cover;

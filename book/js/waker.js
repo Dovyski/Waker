@@ -24,6 +24,7 @@ var Waker = new function() {
 	this.CONTENT_FOLDER = "./content/";
 	
 	var mCurrentPage 	= 0;
+	var mLastViewedPage = 0;	
 	var mPages 			= [];
 
 	var buildIndexWindow = function() {
@@ -68,14 +69,39 @@ var Waker = new function() {
 		});
 	};
 	
+	var pageLoaded = function(theData) {
+		$('#headline').empty();
+		$('#page-content').html(theData);
+		$('#content .dossier-headline-arrow').fadeIn();
+		
+		updateNavBar();
+		updateHeadlineImage();
+		
+		if(mCurrentPage == 0) {
+			// Current page is cover. In this case, load the content into
+			// the headline div, overlaying the background image, and do not
+			// use the page-content div.
+			$('#headline').html($('#page-content').html());
+			$('#page-content').empty();
+			$('#content .dossier-headline-arrow').fadeOut();
+		}
+	};
+	
+	var pageNotLoaded = function(theData) {
+		mCurrentPage = mLastViewedPage;
+		
+		// TODO: show a nice modal telling what happened.
+		alert("Page not loaded!");
+	};
+	
 	var loadPage = function(thePage) {
 		// TODO: loading anim?
 		$('#toc').fadeOut();
 		
-		$('#page-content').load(Waker.CONTENT_FOLDER + thePage, function() {
-			updateNavBar();
-			updateHeadlineImage();
-		});
+		$.ajax({
+			url: Waker.CONTENT_FOLDER + thePage,
+			context: document.getElementById("page-content"),
+		}).success(pageLoaded).error(pageNotLoaded);
 	};
 	
 	var indexLoaded = function(theData) {
@@ -107,6 +133,7 @@ var Waker = new function() {
 		var aRet = false;
 		
 		if(mCurrentPage < mPages.length - 1) {
+			mLastViewedPage = mCurrentPage;
 			mCurrentPage++;
 			loadPage(mPages[mCurrentPage].url);
 			aRet = true;
@@ -119,6 +146,7 @@ var Waker = new function() {
 		var aRet = false;
 		
 		if(mCurrentPage > 0) {
+			mLastViewedPage = mCurrentPage;
 			mCurrentPage--;
 			loadPage(mPages[mCurrentPage].url);
 			aRet = true;
@@ -128,7 +156,8 @@ var Waker = new function() {
 	};
 	
 	this.coverPage = function() {
-		mCurrentPage = 0;
+		mLastViewedPage = mCurrentPage;
+		mCurrentPage 	= 0;
 		loadPage(mPages[mCurrentPage].url);
 	};
 	
