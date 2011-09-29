@@ -181,7 +181,7 @@ var Waker = new function() {
 		updateNavBar();
 		
 		$.ajax({
-			url: Waker.CONTENT_FOLDER + "index.html",
+			url: Waker.CONTENT_FOLDER + "config.html",
 			context: document.body,
 		}).success(indexLoaded).error(indexNotLoaded);
 	};
