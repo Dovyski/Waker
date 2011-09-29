@@ -164,7 +164,7 @@ var Waker = new function() {
 	this.gotoPage = function(theNumber) {
 		var aRet = false;
 		
-		if(theNumber >= 0 && theNumber <= mPages.length - 1) {
+		if(theNumber >= 0 && theNumber <= mPages.length - 1 && theNumber != mCurrentPage) {
 			mCurrentPage = theNumber;
 			loadPage(mPages[mCurrentPage].url);
 			aRet = true;
