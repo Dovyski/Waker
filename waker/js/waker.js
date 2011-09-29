@@ -27,6 +27,11 @@ var Waker = new function() {
 	var mLastViewedPage = 0;	
 	var mPages 			= [];
 
+	/**
+	 * Builds the index window (the one displayed when the user clicks the index icon,
+	 * upper right corner of the page). The index is generated based on the information
+	 * loaded from "config.html".
+	 */
 	var buildIndexWindow = function() {
 		var i, aToc = $("#toc div");
 		
@@ -41,7 +46,11 @@ var Waker = new function() {
 						'</a>');
 		}
 	};
-	
+
+	/**
+	 * Updates de navbar (buttons/infos in the upper left corner of the page) according to the current
+	 * page. If the user is reading the last page, for instance, the "next" button is disabled.
+	 */
 	var updateNavBar = function() {
 		//$('.logo-small').hide();
 		
@@ -62,6 +71,16 @@ var Waker = new function() {
 		}
 	};
 	
+	/**
+	 * Updates the headline image of the page according to the meta data collected in the index.
+	 * This method must be called every time the user changes the current page, so the old
+	 * headline image can be replaced by the new one.
+	 * 
+	 * This method inspects the "page-content" div looking for <img> tags with class "img-headline".
+	 * When the image is found, its src attribute is used to set the headline image in "index.html", then
+	 * it *removes* the image from the "page-content" div. If the "page-content" is empty, this
+	 * method will perform no action.  
+	 */
 	var updateHeadlineImage = function() {
 		$('#page-content img.img-headline').each(function(theIndex) {
 			$('#headline').css("background-image", "url("+$(this).attr("src")+")");
@@ -69,6 +88,11 @@ var Waker = new function() {
 		});
 	};
 	
+	/** 
+	 * Callback function invoked when a page successfully finish loading.
+	 * 
+	 * @param theData the content of the page successfully loaded
+	 */
 	var pageLoaded = function(theData) {
 		$('#headline').empty();
 		$('#page-content').html(theData);
@@ -87,6 +111,12 @@ var Waker = new function() {
 		}
 	};
 	
+	/**
+	 * Callback function invoked when a page could not be loaded. It happens
+	 * when a wrong entry is placed in the "config.html" file.
+	 * 
+	 * @param theData erro data provided by jQuery? 
+	 */
 	var pageNotLoaded = function(theData) {
 		mCurrentPage = mLastViewedPage;
 		
@@ -94,6 +124,13 @@ var Waker = new function() {
 		alert("Page not loaded!");
 	};
 	
+	/**
+	 * Loads the content of a page. If the requested page exists, the callback
+	 * <code>pageLoaded()</code> is invoked when the loading process is done. In
+	 * case of error, <code>pageNotLoaded()</code> is invoked.
+	 * 
+	 * @param thePage url of the page to be loaded.
+	 */
 	var loadPage = function(thePage) {
 		// TODO: loading anim?
 		$('#toc').fadeOut();
@@ -104,6 +141,11 @@ var Waker = new function() {
 		}).success(pageLoaded).error(pageNotLoaded);
 	};
 	
+	/**
+	 * Callback invoked when the index finish loading.
+	 * 
+	 * @param theData index content (a piece of html code contaning several links, one for each content page).
+	 */
 	var indexLoaded = function(theData) {
 		mPages.splice(0);
 		
@@ -124,11 +166,20 @@ var Waker = new function() {
 		Waker.coverPage();
 	};
 	
+	/**
+	 * Callback invoked when the index could not be loaded. It will happen only if the "config.html"
+	 * file is missing.
+	 */
 	var indexNotLoaded = function() {
 		// TODO: do something better...
 		alert("Index not loaded!");
 	};
 	
+	/**
+	 * Jumps to the next page in the magazine.
+	 * 
+	 * @return <code>true</code> if there is a next page, even though it might be an invalid one (wrong url, for instance); <code>false</code> if the is no next page to jump to.
+	 */
 	this.nextPage = function() {
 		var aRet = false;
 		
@@ -142,6 +193,12 @@ var Waker = new function() {
 		return aRet;
 	};
 	
+	/**
+	 * Jumps to the prev page in the magazine. The prev page is the one that is right before the current page
+	 * in the index. This prev page *is not* the last visited page.
+	 * 
+	 * @return <code>true</code> if there is a prev page, even though it might be an invalid one (wrong url, for instance); <code>false</code> if the is no prev page to jump to.
+	 */
 	this.prevPage = function() {
 		var aRet = false;
 		
@@ -155,12 +212,21 @@ var Waker = new function() {
 		return aRet;
 	};
 	
+	/**
+	 * Jumps to the cover page (first page in the index).
+	 */
 	this.coverPage = function() {
 		mLastViewedPage = mCurrentPage;
 		mCurrentPage 	= 0;
 		loadPage(mPages[mCurrentPage].url);
 	};
-	
+
+	/**
+	 * Jumps to any page in the index.
+	 * 
+	 * @param theNumber page number in the index: the first page is 0 (cover), the second one is 1, and so on.
+	 * @return <code>true</code> if the informed index number is valid, even though the page in that position might not be valid (wrong url, for instance); <code>false</code> if the informed index number is invalid (out of range).
+	 */
 	this.gotoPage = function(theNumber) {
 		var aRet = false;
 		
@@ -173,10 +239,17 @@ var Waker = new function() {
 		return aRet;
 	}
 	
+	/**
+	 * Toggle the index visibility. The index is the black box displayed when the user clicks
+	 * the index icon, in the upper right corver.
+	 */
 	this.toggleToc = function() {
 		$("#toc").fadeToggle();
 	};
 	
+	/**
+	 * Starts Waker, loading the pages meta data and displaying the cover page.
+	 */
 	this.init = function() {
 		updateNavBar();
 		
