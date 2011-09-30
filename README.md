@@ -17,7 +17,7 @@ I also needed something that allowed me to focus on the content itself, not its 
 Usage 
 -----
 
-@TODO
+Check out the [getting started](https://github.com/Dovyski/Waker/wiki/Getting-started) page on the wiki.
 
 
 Copyright and license
@@ -25,7 +25,7 @@ Copyright and license
 
 Waker itself is released under the [MIT license](http://www.opensource.org/licenses/mit-license.php), but it has several [Laker](https://github.com/ffranke/Laker-Compendium) and [Baker](https://github.com/Simbul/baker) files that may have their own licenses.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software.
 
 
 Changelog
