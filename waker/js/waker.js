@@ -137,6 +137,7 @@ var Waker = new function() {
 		
 		$.ajax({
 			url: Waker.CONTENT_FOLDER + thePage,
+			cache: false,
 			context: document.getElementById("page-content"),
 		}).success(pageLoaded).error(pageNotLoaded);
 	};

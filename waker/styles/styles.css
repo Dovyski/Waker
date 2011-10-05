@@ -47,11 +47,18 @@ body {    overflow-x: hidden }
 
 .dossier-headline-arrow {
     position: relative;
-    margin-top: -38px; margin-bottom: -15px; margin-left: 371px;
-	z-index: 10
+    margin: -30px 28px 0 28px;
+	z-index: 10;
+    background-color: #fff;
+    text-align: center;
+    height: 30px;
 }
 .dossier-headline-arrow img {
-    width: 30px; height: 30px
+	position: absolute;
+	left: 50%;
+	top: -10px;
+    width: 30px;
+    height: 30px;
 }
 
 .dossier-number {
@@ -118,7 +125,7 @@ px      68    160    252    344    436    528    620    712
 	    margin: auto
 	}
 	
-	.dossier-headline-arrow {  margin-left: 279px; }
+	.dossier-headline-arrow {  margin-left: 28px; }
 	
 }
 
@@ -206,7 +213,7 @@ px      68    160    252
 	ipad-only {    display: none }
 	.iphone-only,
 	.ios-only {    display: block }
-	.dossier-headline-arrow {    margin-left: 145px }
+	.dossier-headline-arrow {    margin-left: 28px }
 }
 
 
@@ -232,7 +239,7 @@ px      68    160    252    344    436
 	}
 	.portrait {    display: none }
 	.landscape {    display: block }
-	.dossier-headline-arrow {    margin-left: 225px }
+	.dossier-headline-arrow {    margin-left: 28px }
 }
 
 
