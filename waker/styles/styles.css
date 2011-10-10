@@ -65,6 +65,10 @@ body {    overflow-x: hidden }
 	display: none;
 }
 
+.logo-small {
+	
+}
+
 /* Selection colours (easy to forget) */
 ::selection {    background: #d3f9f2 }
 ::-moz-selection {    background: #d3f9f2 }
