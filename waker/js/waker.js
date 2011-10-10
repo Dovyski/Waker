@@ -32,7 +32,7 @@ var Waker = new function() {
 	 * upper right corner of the page). The index is generated based on the information
 	 * loaded from "config.html".
 	 */
-	var buildIndexWindow = function() {
+	var buildIndexModal = function() {
 		var i, aToc = $("#toc div");
 		
 		aToc.empty();
@@ -82,10 +82,33 @@ var Waker = new function() {
 	 * method will perform no action.  
 	 */
 	var updateHeadlineImage = function() {
-		$('#page-content img.img-headline').each(function(theIndex) {
-			$('#headline').css("background-image", "url("+$(this).attr("src")+")");
-			$(this).remove();
-		});
+		var aHeadlineImgs = $('#page-content img.img-headline');
+		
+		if(aHeadlineImgs.size() != 0) {
+			aHeadlineImgs.each(function(theIndex) {
+				$('#headline').css("background-image", "url("+$(this).attr("src")+")");
+				$(this).remove();
+			});
+		} else {
+			$('#headline').css("background", "none");
+		}
+
+		// TODO: improve this. The content should be positioned using CSS only, not js calls.		
+		updateContentPosition();
+	};
+	
+	/**
+	 * Updates the content div position. The position relies on the headline image:
+	 * if there is a headline image, the content div remains where it was initially; if there is no headline image, then the content div is positioned to fill the empty space. 
+	 */
+	var updateContentPosition = function() {
+		if($('#headline').css("background-image") != "none") {
+			$('#page-content').css("top", 0);
+			$('#dossier-headline-arrow').css("display", "block");
+		} else {
+			$('#page-content').css("top", Math.round(-$('#headline').height() + $('#dossier-number').height() / 2) + "px");
+			$('#dossier-headline-arrow').css("display", "none");
+		}
 	};
 	
 	/** 
@@ -163,7 +186,7 @@ var Waker = new function() {
 			console.info("Article #"+theIndex+" added "+JSON.stringify(mPages[theIndex]));
 		});
 		
-		buildIndexWindow();
+		buildIndexModal();
 		Waker.coverPage();
 	};
 	
@@ -174,6 +197,10 @@ var Waker = new function() {
 	var indexNotLoaded = function() {
 		// TODO: do something better...
 		alert("Index not loaded!");
+	};
+	
+	this.resizeContent = function() {
+		updateContentPosition();
 	};
 	
 	/**
@@ -263,4 +290,8 @@ var Waker = new function() {
 
 $(function() {
 	Waker.init();
+});
+
+$(window).resize(function () {
+	Waker.resizeContent(); 
 });

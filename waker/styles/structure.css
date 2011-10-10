@@ -92,6 +92,11 @@ px      68    160    252    344    436    528    620    712    804    896
     background-repeat: no-repeat;
 }
 
+#page-content {
+	position: relative;
+	top: 0;
+}
+
 .footer {
     width: 100%;
     clear: both;
@@ -272,7 +277,6 @@ px      68    160    252    344    436
 	}
 	.dossier-start-bg {
 	    height: 260px;
-	    padding-top: 60px
 	}
 }
 

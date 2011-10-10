@@ -463,12 +463,4 @@ px      68    160    252
 
 
 @media only screen and (max-width: 767px) { 
-	.nav-bar,
-	.edge-left,
-	.edge-right,
-	.logo-small,
-	.nav-button.cover,
-	.nav-container,
-	.nav-button,
-	.nav-bar {    display: none }
 }
