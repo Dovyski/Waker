@@ -121,6 +121,8 @@ var Waker = new function() {
 		$('#page-content').html(theData);
 		$('#content .dossier-headline-arrow').fadeIn();
 		
+		document.title = mPages[mCurrentPage].title;
+		
 		updateNavBar();
 		updateHeadlineImage();
 		
