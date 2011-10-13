@@ -86,7 +86,7 @@ var Waker = new function() {
 		
 		if(aHeadlineImgs.size() != 0) {
 			aHeadlineImgs.each(function(theIndex) {
-				$('#headline').css("background-image", "url("+$(this).attr("src")+")");
+				$('#headline').css("background-image", "url("+$(this).attr("src")+"?" + Math.random() + ")");
 				$(this).remove();
 			});
 		} else {

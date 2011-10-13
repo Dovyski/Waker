@@ -69,6 +69,19 @@ body {    overflow-x: hidden }
 	
 }
 
+/* Nice GitHub code highlight :) */
+pre,
+code {
+	font-family: 'Bitstream Vera Sans Mono','Courier', monospace;
+	background-color: #f8f8ff!important;
+	border:1px solid #dedede;
+	font-size:13px;
+	padding:0;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+
 /* Selection colours (easy to forget) */
 ::selection {    background: #d3f9f2 }
 ::-moz-selection {    background: #d3f9f2 }
