@@ -84,7 +84,7 @@ var Waker = new function() {
 	var updateHeadlineImage = function() {
 		var aHeadlineImgs = $('#page-content img.img-headline');
 		
-		if(aHeadlineImgs.size() != 0) {
+		if(aHeadlineImgs.size() != 0 && mCurrentPage != 0) {
 			aHeadlineImgs.each(function(theIndex) {
 				$('#headline').css("background-image", "url("+$(this).attr("src")+"?" + Math.random() + ")");
 				$(this).remove();
@@ -104,10 +104,15 @@ var Waker = new function() {
 	var updateContentPosition = function() {
 		if($('#headline').css("background-image") != "none") {
 			$('#page-content').css("top", 0);
-			$('#dossier-headline-arrow').css("display", "block");
+			$('#dossier-headline-arrow').show();
 		} else {
-			$('#page-content').css("top", Math.round(-$('#headline').height() + $('#dossier-number').height() / 2) + "px");
-			$('#dossier-headline-arrow').css("display", "none");
+			if(mCurrentPage == 0) {
+				$('#page-content').css("top", 0);
+			} else {
+				$('#page-content').css("top", Math.round(-$('#headline').height() + $('#dossier-number').height() / 2) + "px");				
+			}
+			
+			$('#dossier-headline-arrow').hide();
 		}
 	};
 	
@@ -119,7 +124,6 @@ var Waker = new function() {
 	var pageLoaded = function(theData) {
 		$('#headline').empty();
 		$('#page-content').html(theData);
-		$('#content .dossier-headline-arrow').fadeIn();
 		
 		document.title = mPages[mCurrentPage].title;
 		
@@ -127,12 +131,9 @@ var Waker = new function() {
 		updateHeadlineImage();
 		
 		if(mCurrentPage == 0) {
-			// Current page is cover. In this case, load the content into
-			// the headline div, overlaying the background image, and do not
-			// use the page-content div.
-			$('#headline').html($('#page-content').html());
-			$('#page-content').empty();
-			$('#content .dossier-headline-arrow').fadeOut();
+			$('#headline').hide();
+		} else {
+			$('#headline').show();
 		}
 	};
 	
