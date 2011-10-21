@@ -1,0 +1,131 @@
+<!--
+
+This is Waker starting point.
+
+From here Waker will load all content pages and adjust the layout accordly. In order to
+create content pages, just create an html file in the same directory of this file (index.html)
+and add it to the config.html file (where Waker will look for information regarding pages order, content, etc).
+
+NOTICE: you SHOULD NOT modify this file unless you know exactly what you are doing. Waker relies on
+this file to load and adjust page content.
+
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+
+	<!--Prevent pinch to zoom on iOS devices-->
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;" />
+
+	<!--Allow saving as a web app on the home screen on iOS Devices (doesn't apply in Baker)-->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<!--If the page is saved as a web app, the statusbar will be black-translucent (doesn't apply in Baker)-->
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<!--Prevent phone number detection on iOS devices-->
+	<meta name="format-detection" content="telephone=no" />
+
+	<!--Title. The content of the title is displayed on the loading screen on iOS devices-->
+	<title></title>
+
+	<link href="./waker/styles/styles.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="./waker/js/jquery-1.5.min.js" ></script>
+	<script type="text/javascript" src="./waker/js/Hyphenator.js" ></script>
+	<script type="text/javascript" src="./waker/js/waker.js"></script>	
+	
+	<!--Card Flip Effect-->
+	<script type="text/javascript" src="./waker/js/jquery-css-transform.js"></script>
+	<script type="text/javascript" src="./waker/js/rotate3Di.js"></script>
+	
+	<!--Audio Player-->
+	<script type="text/javascript" src="./waker/js/jquery.jplayer.min.js"></script>
+	
+	<!--Mandatory JavaScripts (Uncomment if not used to speed up performance)
+	<script type="text/javascript" src="./waker/js/jquery.touchSwipe-1.2.1.js"></script>
+	-->
+</head>
+
+<body>
+
+<!--
+############################################################################
+"Table of content" in navigation bar #######################################
+############################################################################
+-->
+
+<div class="nav-bar">
+	<div class="nav-bar-container">
+		<a href="javascript:void(0)" class="nav-button toc" onclick="Waker.toggleToc()"><div class="toc-label">Index</div></a>
+		<div id="toc" class="toc-list">
+			<div class="hyphenate"><!-- toc will be loaded into this div --></div>
+		</div>
+	</div>
+</div>
+
+<!--
+############################################################################
+End "Table of content" in navigation bar ###################################
+############################################################################
+-->
+
+
+<!--
+############################################################################
+Start dossier navigation in navigation bar #################################
+############################################################################
+-->
+
+<!--Logo, which is placed in the middle of the navigation bar-->
+<div class="logo-small"><img src="./waker/images/nav/waker-logo-small.png" width="57" height="24" alt="logo" /></div>
+
+<!-- Links to cover, prev and next dossier -->
+<a href="javascript:void(0)" onclick="Waker.coverPage()" class="nav-button cover" id="nav-cover"><div class="nav-button-text">Cover</div></a>
+<a href="javascript:void(0)" onclick="Waker.nextPage()" class="nav-button next" id="nav-next"><div class="nav-button-text">Next page</div></a>
+<a href="javascript:void(0)" onclick="Waker.prevPage()" class="nav-button prev" id="nav-prev"><div class="nav-button-text">Previous page</div></a>
+	
+<!-- Dossier number and fancy page edges -->
+<div id="dossier-number" class="dossier-number"><p><!-- Number will be loaded into this div --></p></div>
+<div class="edge-left"></div>
+<div class="edge-right"></div>	
+
+<!--
+############################################################################
+End dossier navigation in navigation bar ###################################
+############################################################################
+-->
+
+<!--Enable text hyphenation with Hyphenator.js-->
+<div id="content" class="hyphenate">
+
+	<!--Dossier start image-->
+	<div class="dossier-start-bg" id="headline">
+		<!--
+			This div contains the big image used as the dossier headline. The image is
+			placed as the div background. If Waker is loading the cover page, its content
+			will be placed into this div, overlaying the headline background image.
+			
+			For all other pages loaded by Waker, the content will be loaded into the "page-content" div
+			and this div here will feature the headline image. In order to specify a headline image, 
+			the loaded page must have an img tag contaning the class "img-headline". If it is found,
+			the img src attribute will be used as the headlined background image.
+		-->
+	</div>
+	
+	<!--Arrow which indicates the start of the text-->
+	<div class="dossier-headline-arrow" id="dossier-headline-arrow"><img src="./waker/images/dossier-headline-arrow.png" /></div>
+	
+	<div id="page-content" class="content-element"></div>	
+</div>
+  
+<div class="footer">
+    <div class="content-element">
+    	<p>All images made using royalty-free resources from <a href="http://mysitemyway.com/">http://mysitemyway.com</a></p>
+    </div>
+</div>
+
+</body>
+</html>

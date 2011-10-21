@@ -1,0 +1,23 @@
+#overview {
+	background: #FF6600 url('img/header.jpg');
+	padding: 5px;
+	margin-bottom: 20px;
+	color: #fff; 
+}
+
+#overview h1 {
+	color: #fff; 
+	font-size: 42px;
+}
+
+.centered {
+	text-align: center;
+}
+
+#quick-start {
+	margin-top: 20px;
+}
+
+.social {
+	text-align: center;
+}

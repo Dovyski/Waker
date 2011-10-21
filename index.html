@@ -1,79 +1,123 @@
+
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Waker - build HTML5 magazines</title>
+    <meta name="title" content="Waker">    
+    <meta name="description" content="Build HTML5 magazines">
+    <meta name="author" content="Fernando Bevilacqua">
 
-  <title>Dovyski/Waker @ GitHub</title>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #ff9d00;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #0062ff; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #0062ff; }
-    h3 { text-align: center; color: #0062ff; }
-    a { color: #0062ff; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+    <!-- Le styles -->
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
 
-<body>
-  <a href="http://github.com/Dovyski/Waker"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/ico/favicon.ico">
+    <link rel="apple-touch-icon" href="img/ico/waker-apple-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/ico/waker-apple-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/ico/waker-apple-114x114.png">
+  </head>
 
-  <div id="container">
+  <body>
+	<a href="http://github.com/Dovyski/Waker"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+	
+    <!-- Masthead (blueprinty thing)
+    ================================================== -->
+    <header class="jumbotron masthead" id="overview">
+      <div class="inner">
+        <div class="container">
+          <h1>Waker</h1>
+          <p>It's time to start building HTML5 magazines!</p>
+        </div><!-- /container -->
+      </div>
+    </header>
 
-    <div class="download">
-      <a href="http://github.com/Dovyski/Waker/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/Dovyski/Waker/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
-    </div>
+    <div class="container">
 
-    <h1><a href="http://github.com/Dovyski/Waker">Waker</a>
-      <span class="small">by <a href="http://github.com/Dovyski">Dovyski</a></span></h1>
+<!-- About Bootstrap
+================================================== -->
+		<section id="about">
+		  <div class="page-header">
+		    <h1>About <small>Some background history and information</small></h1>
+		  </div>
+		  <div class="row">
+		    <div class="span15">
+		      Waker is a "web-only" version of <a href="https://github.com/ffranke/Laker-Compendium" target="_blank">Laker</a>, a compendium of files, frameworks, styles and tips for designing digital publications.
+              It is fully based on HTML5 and was designed to be easy and simple to use.<br /><br />
+		    </div>
+		    <div class="span-one-third centered">
+			  <img src="img/why.png" alt="Why?" />
+		      <h2>Why?</h2>
+			  <p>Because I thought <a href="https://github.com/ffranke/Laker-Compendium" target="_blank">Laker</a> and <a href="https://github.com/Simbul/baker" target="_blank">Baker</a> could not (easily) do what I wanted to do: an eletronic magazine, available in a variety of forms.</p>
+		    </div>
+		    <div class="span-one-third centered">
+			  <img src="img/features.png" alt="Features" />
+		      <h2>Features</h2>
+		      <p>Minimum configuration; uses HTML5, JS and CSS only; magazine-like layout; (almost) automatic index generation; no JS skills required (only HTML/CSS).</p>
+		    </div>
+		    <div class="span-one-third centered">
+			  <img src="img/waker.png" alt="Download" />
+		      <h2>Download</h2>
+		      <p>Enough talking, gimme the goodies!</p>
+              <p><a target="_blank" href="https://github.com/Dovyski/Waker" class="btn primary">Waker on GitHub &raquo;</a></p>
+		    </div>
+		  </div><!-- /row -->
+		</section>
+		
+		<section id="quick-start">
+		  <div class="page-header">
+		    <h1>Quick-start <small>Waker crash course</small></h1>
+		  </div>
+		  <div class="row">
+		    <div class="span6">
+		      <p>Create an online publication (e.g. magazine) using Waker in 4 steps:</p>
+		      <ol>
+		      	<li>Download Waker.</li>
+		      	<li>Add a content page (e.g. dossier01.html).</li>
+		      	<li>Create a link for that page in config.html.</li>
+		      	<li>You are done, take a coffee!</li>
+		      </ol>
+		    </div>
+		    <div class="span4">
+				<div class="alert-message block-message error centered">
+				  <p>Take a look at Waker's demo magazine<br /><br /><a target="_blank" href="./demo/" class="btn danger">Online demo</a></p>
+				</div>
+		    </div>
+		    <div class="span6 social">
+				<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="dovyski">Tweet</a>
+		        <g:plusone size="tall" annotation="bubble"></g:plusone>
+		    </div>
+		  </div><!-- /row -->
+		</section>
+    </div><!-- /container -->
 
-    <div class="description">
-      Waker is a compendium of files to create HTML5 magazines.
-    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>
+          Created by <a href="http://twitter.com/dovyski" target="_blank">@dovyski</a> based on <a href="https://github.com/ffranke/Laker-Compendium" target="_blank">Laker</a> and <a href="https://github.com/Simbul/baker" target="_blank">Baker</a>.<br />
+          Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">MIT License</a>.
+        </p>
+      </div>
+    </footer>
 
-    <p>Waker is a "web-only" version of Laker, a compendium of files, frameworks, styles and tips for designing digital publications.</p><h2>License</h2>
-<p>MIT</p>
-<h2>Authors</h2>
-<p>Waker:<br/>Fernando Bevilacqua (dovyski@gmail.com)<br/><br/>Laker:<br/>Florian Franke (mail@florian-franke.net)<br/><br/>Baker:<br/>Andrea Campi (andrea.campi@zephirworks.com)<br/>Folletto (folletto@gmail.com)<br/>Sander van de Graaf (github@svdgraaf.nl)<br/>Xm4s (jintetsu@gmail.com)<br/>Alessandro Morandi (simbul.id@gmail.com)<br/>David Haslem (therabidbanana@gmail.com)<br/>Simbul (webmaster@simbul.net)</p>
-<h2>Contact</h2>
-<p>Fernando Bevilacqua (dovyski@gmail.com)<br/>      </p>
+	<script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+ 	<script type="text/javascript">
+      window.___gcfg = {
+        lang: 'en-US'
+      };
 
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/Dovyski/Waker/zipball/master">zip</a> or
-      <a href="http://github.com/Dovyski/Waker/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/Dovyski/Waker</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/Dovyski/Waker">Dovyski/Waker</a>
-    </div>
-
-  </div>
-
-  
-</body>
+      (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })();
+    </script>
+  </body>
 </html>
