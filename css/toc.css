@@ -1,3 +1,7 @@
+/*
+ * This CSS file defines how the TOC (table of content) looks like.
+ */
+
 #toc {
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -27,8 +31,8 @@
 
 .toc-thumb {
 	float: left;
-	width: 60px;
-	height: 60px;
+	width: 10%;
+	height: 10%;
 	margin: 5px;
 	border: #fff 2px solid;
 }
@@ -60,7 +64,7 @@
     z-index: 999999;
     
     /* Specify the width of your pageslide here */
-    width: 50%;
+    width: 70%;
     padding: 10px;
     
     /* These styles are optional, and describe how the pageslide will look */
