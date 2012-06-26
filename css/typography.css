@@ -41,13 +41,13 @@ li {
 
 a:link, a:visited, a:hover {
 	color:#77f9ae;
-	}
+}
 	
 .content-element a {
 	color:#000;
 	text-decoration:none;
 	border-bottom:1px solid #77f9ae;
-	}
+}
 
 .dossier-number {
     position: absolute;
@@ -65,7 +65,30 @@ a:link, a:visited, a:hover {
     font-size: 2.6em;
     font-family: 'Oswald'
 }
+
 .footer p {
     color: #c7c7c7;
     font-size: 0.9em
+}
+
+/**
+ * Table of Content (TOC)
+ */
+.toc-item  h1 {
+	color: #fff;
+    font-size: 25px;
+    font-family: 'Oswald';
+    
+}
+
+.toc-item  p {
+	color: #8a8a8a;
+    font-size: 15px;
+    line-height: 1.1em;
+}
+
+.toc-number {
+	color: #3f3f3f;
+    font-family: 'Oswald';
+    font-size: 80px;
 }

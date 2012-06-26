@@ -1,3 +1,55 @@
+#toc {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.toc-item {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	margin: 5px;
+	border: #555 1px solid;
+	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 0;
+}
+
+.toc-link {
+	text-decoration: none;
+}
+
+.toc-number {
+	position: absolute;
+	bottom: -25px;
+	right: 0;
+	z-index: 0;
+}
+
+.toc-thumb {
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin: 5px;
+	border: #fff 2px solid;
+}
+
+/* Custom scrollbar on webkit browsers */
+
+#toc::-webkit-scrollbar {
+    width: 3px;
+}
+ 
+#toc::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 2px rgba(1,1,1,0.3); 
+}
+ 
+#toc::-webkit-scrollbar-thumb {
+	background: #fff;
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.9); 
+}
+
+/* Style for PageSlide */
+
 #pageslide {
     /* These styles MUST be included. Do not change. */
     display: none;
@@ -8,8 +60,8 @@
     z-index: 999999;
     
     /* Specify the width of your pageslide here */
-    width: 260px;
-    padding: 20px;
+    width: 50%;
+    padding: 10px;
     
     /* These styles are optional, and describe how the pageslide will look */
     background-color: #333;

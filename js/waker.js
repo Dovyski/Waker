@@ -28,21 +28,22 @@ var Waker = new function() {
 	var mPages 			= [];
 
 	/**
-	 * Builds the index window (the one displayed when the user clicks the index icon,
-	 * upper right corner of the page). The index is generated based on the information
-	 * loaded from "config.html".
+	 * Builds the toc panel (the one that slides from the left). The index is generated based on the
+	 * information loaded from "config.html".
 	 */
-	var buildIndexModal = function() {
-		var i, aToc = $("#toc div");
+	var buildTocPanel = function() {
+		var i, aToc = $("#toc");
 		
 		aToc.empty();
 		
 		for(i = 0; i < mPages.length; i++) {
-			aToc.append('<a class="toc-dossier" href="javascript:void(0)" onclick="Waker.gotoPage('+i+')">' +
-							'<div class="toc-dossier-number">'+(i == 0 ? "C" : i)+'</div>'+
-							'<img class="toc-thumb" src="'+mPages[i].thumb+'" />'+
-							'<h1>'+mPages[i].title+'</h1>'+
-							'<p>'+mPages[i].desc+'</p>'+
+			aToc.append('<a class="toc-link" href="javascript:void(0)" onclick="Waker.gotoPage('+i+')">' + 
+							'<div class="toc-item">' +
+								'<div class="toc-number">'+(i == 0 ? "C" : i)+'</div>'+
+								'<img class="toc-thumb" src="./content/'+mPages[i].thumb+'" />'+
+								'<h1>'+mPages[i].title+'</h1>'+
+								'<p>'+mPages[i].desc+'</p>'+
+							'</div>' +
 						'</a>');
 		}
 	};
@@ -92,28 +93,6 @@ var Waker = new function() {
 		} else {
 			$('#headline').css("background", "none");
 		}
-
-		// TODO: improve this. The content should be positioned using CSS only, not js calls.		
-		updateContentPosition();
-	};
-	
-	/**
-	 * Updates the content div position. The position relies on the headline image:
-	 * if there is a headline image, the content div remains where it was initially; if there is no headline image, then the content div is positioned to fill the empty space. 
-	 */
-	var updateContentPosition = function() {
-		if($('#headline').css("background-image") != "none") {
-			$('#page-content').css("top", 0);
-			$('#dossier-headline-arrow').show();
-		} else {
-			if(mCurrentPage == 0) {
-				$('#page-content').css("top", 0);
-			} else {
-				$('#page-content').css("top", Math.round(-$('#headline').height() + $('#dossier-number').height() / 2) + "px");				
-			}
-			
-			$('#dossier-headline-arrow').hide();
-		}
 	};
 	
 	/** 
@@ -147,7 +126,7 @@ var Waker = new function() {
 		mCurrentPage = mLastViewedPage;
 		
 		// TODO: show a nice modal telling what happened.
-		alert("Page not loaded!");
+		//alert("Page not loaded!");
 	};
 	
 	/**
@@ -176,9 +155,9 @@ var Waker = new function() {
 	var indexLoaded = function(theData) {
 		mPages.splice(0);
 		
-		$("body").append('<div id="cindex" style="display: block;">' + theData + '</div>');
+		$("header").append('<div id="toc" style="display: none;">' + theData + '</div>');
 		
-		$("#cindex a").each(function(theIndex) {
+		$("#toc a").each(function(theIndex) {
 			var aObj = $(this);
 			mPages[theIndex] = {
 					url: 	aObj.attr("href"),
@@ -189,8 +168,9 @@ var Waker = new function() {
 			console.info("Article #"+theIndex+" added "+JSON.stringify(mPages[theIndex]));
 		});
 		
-		buildIndexModal();
+		buildTocPanel();
 		Waker.coverPage();
+		Waker.openToc();
 	};
 	
 	/**
@@ -201,11 +181,7 @@ var Waker = new function() {
 		// TODO: do something better...
 		alert("Index not loaded!");
 	};
-	
-	this.resizeContent = function() {
-		updateContentPosition();
-	};
-	
+		
 	/**
 	 * Jumps to the next page in the magazine.
 	 * 
@@ -291,7 +267,11 @@ var Waker = new function() {
 	 */
 	this.init = function() {
 		updateNavBar();
-				
+		
+		// TODO: remove this debug lines!
+		indexLoaded('<a href="cover.html" data-thumb="./img/cover/toc-thumb.jpg" title="Cover">Project logo</a><a href="dossier-01.html" data-thumb="./img/dossier-01/toc-thumb.jpg" title="Waker">Build HTML5 magazines.</a><a href="dossier-02.html" data-thumb="./img/dossier-02/toc-thumb.jpg" title="Pages">Create content.</a><a href="dossier-03.html" data-thumb="./img/dossier-03/toc-thumb.jpg" title="Organize">Columns and images.</a>');
+		return;
+		
 		$.ajax({
 			url: Waker.CONTENT_FOLDER + "config.html",
 			context: document.body
@@ -301,8 +281,4 @@ var Waker = new function() {
 
 $(function() {
 	Waker.init();
-});
-
-$(window).resize(function () {
-	Waker.resizeContent(); 
 });
