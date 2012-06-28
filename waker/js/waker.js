@@ -56,19 +56,19 @@ var Waker = new function() {
 		//$('.logo-small').hide();
 		
 		if(mCurrentPage == mPages.length - 1) {
-			$('#nav-next').fadeOut();
+			$('#next-button').fadeOut();
 		} else {
-			$('#nav-next').fadeIn();
+			$('#next-button').fadeIn();
 		}
-		
+
 		if(mCurrentPage == 0) {
-			$('#nav-prev').fadeOut();
-			$('#nav-cover').fadeOut();
-			$('#dossier-number').fadeOut();
+			$('#prev-button').fadeOut();
+			//$('#toc-button').fadeOut();
+			//$('#dossier-number').fadeOut();
 		} else {
-			$('#nav-prev').fadeIn();
-			$('#nav-cover').fadeIn();
-			$('#dossier-number').html("<p>"+mCurrentPage+"</p>").fadeIn();
+			$('#prev-button').fadeIn();
+			//$('#toc-button').fadeIn();
+			//$('#dossier-number').html("<p>"+mCurrentPage+"</p>").fadeIn();
 		}
 	};
 	
@@ -101,22 +101,13 @@ var Waker = new function() {
 	 * @param theData the content of the page successfully loaded
 	 */
 	var pageLoaded = function(theData) {
-		console.log(theData);
 		$('#content').html(theData);
 		$('#content').fadeIn("fast");
 		
 		showLoading(false, Waker.closeToc);
-		//updateNavBar();
+		updateNavBar();
 		
 		document.title = mPages[mCurrentPage].title;
-		
-		//updateHeadlineImage();
-		/*
-		if(mCurrentPage == 0) {
-			$('#headline').hide();
-		} else {
-			$('#headline').show();
-		}*/
 	};
 	
 	/**
@@ -273,10 +264,25 @@ var Waker = new function() {
 		$.pageslide.close();
 	};
 	
+	var createNavBar = function() {
+		$('#next-button').on('click', function() {
+			Waker.nextPage();
+		});
+		
+		$('#prev-button').on('click', function() {
+			Waker.prevPage();
+		});
+		
+		$('#toc-button').on('click', function() {
+			Waker.openToc();
+		});
+	};
+	
 	/**
 	 * Starts Waker, loading the pages meta data and displaying the cover page.
 	 */
 	this.init = function() {
+		createNavBar();
 		updateNavBar();
 		
 		// TODO: remove this debug lines!
