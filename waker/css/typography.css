@@ -91,3 +91,38 @@ a:link, a:visited, a:hover {
     font-family: 'Oswald';
     font-size: 80px;
 }
+
+
+ /*==============================================================================
+    Blockquotes
+    Thanks: http://24ways.org/2005/swooshy-curly-quotes-without-images
+   ==============================================================================*/
+   
+blockquote {
+	position: relative;
+	background: #efefef;
+	width: 100%;
+	overflow: hidden;
+	height: 100px;
+}
+.bqstart {
+	/*position: absolute;
+	top: -5px;*/
+     float: left;
+     height: 45px;
+     margin-top: -10px;
+     /*padding-top: 45px;
+     margin-bottom: -50px;*/
+     font-size: 700%;
+     color: #FF0000;
+ }
+ .bqend {
+     position: absolute;
+     bottom: -10px;
+     right: 40px;
+     /*height: 25px;
+     margin-top: 0px;
+     padding-top: 45px;*/
+     font-size: 700%;
+     color: #FF0000;
+ }

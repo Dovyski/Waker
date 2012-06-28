@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 var Waker = new function() {
-	this.CONTENT_FOLDER = "./content/";
+	this.CONTENT_FOLDER = "./";
 	
 	var mCurrentPage 	= 0;
 	var mLastViewedPage = 0;	
@@ -40,7 +40,7 @@ var Waker = new function() {
 			aToc.append('<a class="toc-link" href="javascript:void(0)" onclick="Waker.gotoPage('+i+')">' + 
 							'<div class="toc-item">' +
 								'<div class="toc-number">'+(i == 0 ? "C" : i)+'</div>'+
-								'<img class="toc-thumb" src="./content/'+mPages[i].thumb+'" />'+
+								'<img class="toc-thumb" src="' + Waker.CONTENT_FOLDER + mPages[i].thumb + '" />'+
 								'<h1>'+mPages[i].title+'</h1>'+
 								'<p>'+mPages[i].desc+'</p>'+
 							'</div>' +

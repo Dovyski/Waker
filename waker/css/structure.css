@@ -1,27 +1,31 @@
-/*TODO: full-column*/
 .small-column,
 .medium-column,
-.large-column {
+.large-column,
+.full-column {
     position: relative;
     float: left;
+    overflow: hidden;
 }
 .small-column {
-	max-width: 30%;
-    margin: 15px;
+	max-width: 25%;
+    margin: 0;
 }
 .medium-column {
 	max-width: 48%;
-    margin: 10px;
+    margin: 0;
 }
 .large-column {
-	max-width: 100%;
+	max-width: 70%;
+    margin: 0;
+}
+.full-column {
+	max-width: 100%
 }
 .media-center,
 .media-right,
 .media-left {
 	width: 30%;
 	height: auto;
-    padding: 10px;
 }
 .media-headline img,
 .media-center img,
@@ -35,6 +39,7 @@
     height: auto;
     margin: 0 auto;
     clear: both;
+    padding-bottom: 10px;
 }
 .media-center {
 	text-align: center;
@@ -44,9 +49,11 @@
 }
 .media-right {
     float: right;
+	padding-left: 10px;
 }
 .media-left {
     float: left;
+	padding-right: 10px;
 }
 .float-right {
 	margin-right:0px;
@@ -55,6 +62,9 @@
 .float-left {
 	margin-left:0px;
 	float: left;
+}
+.new-line {
+	clear: both;
 }
 #wrapper {
 	position: relative;
