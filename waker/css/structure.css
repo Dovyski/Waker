@@ -19,7 +19,8 @@
     margin: 0;
 }
 .full-column {
-	max-width: 100%
+	max-width: 100%;
+	clear: both;
 }
 .media-center,
 .media-right,
