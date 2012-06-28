@@ -50,10 +50,12 @@
 }
 .media-right {
     float: right;
+    margin: 0;
 	padding-left: 10px;
 }
 .media-left {
     float: left;
+	margin: 0;
 	padding-right: 10px;
 }
 .float-right {

@@ -101,11 +101,12 @@ var Waker = new function() {
 	 * @param theData the content of the page successfully loaded
 	 */
 	var pageLoaded = function(theData) {
+		console.log(theData);
 		$('#content').html(theData);
 		$('#content').fadeIn("fast");
 		
 		showLoading(false, Waker.closeToc);
-		updateNavBar();
+		//updateNavBar();
 		
 		document.title = mPages[mCurrentPage].title;
 		
@@ -181,7 +182,6 @@ var Waker = new function() {
 		
 		buildTocPanel();
 		Waker.coverPage();
-		Waker.openToc();
 	};
 	
 	/**
