@@ -280,8 +280,8 @@ var Waker = new function() {
 		updateNavBar();
 		
 		// TODO: remove this debug lines!
-		indexLoaded('<a href="cover.html" data-thumb="./img/cover/toc-thumb.jpg" title="Cover">Project logo</a><a href="dossier-01.html" data-thumb="./img/dossier-01/toc-thumb.jpg" title="Waker">Build HTML5 magazines.</a><a href="dossier-02.html" data-thumb="./img/dossier-02/toc-thumb.jpg" title="Pages">Create content.</a><a href="dossier-03.html" data-thumb="./img/dossier-03/toc-thumb.jpg" title="Organize">Columns and images.</a>');
-		return;
+		//indexLoaded('<a href="cover.html" data-thumb="./img/cover/toc-thumb.jpg" title="Cover">Project logo</a><a href="dossier-01.html" data-thumb="./img/dossier-01/toc-thumb.jpg" title="Waker">Build HTML5 magazines.</a><a href="dossier-02.html" data-thumb="./img/dossier-02/toc-thumb.jpg" title="Pages">Create content.</a><a href="dossier-03.html" data-thumb="./img/dossier-03/toc-thumb.jpg" title="Organize">Columns and images.</a>');
+		//return;
 		
 		$.ajax({
 			url: Waker.CONTENT_FOLDER + "config.html",
