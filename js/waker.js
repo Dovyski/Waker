@@ -21,7 +21,7 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 var Waker = new function() {
-	this.CONTENT_FOLDER = "./";
+	this.CONTENT_FOLDER = "./content/";
 	
 	var mCurrentPage 	= 0;
 	var mLastViewedPage = 0;	
@@ -101,19 +101,21 @@ var Waker = new function() {
 	 * @param theData the content of the page successfully loaded
 	 */
 	var pageLoaded = function(theData) {
-		$('#headline').empty();
-		$('#page-content').html(theData);
+		$('#content').html(theData);
+		$('#content').fadeIn("fast");
+		
+		showLoading(false, Waker.closeToc);
+		updateNavBar();
 		
 		document.title = mPages[mCurrentPage].title;
 		
-		updateNavBar();
-		updateHeadlineImage();
-		
+		//updateHeadlineImage();
+		/*
 		if(mCurrentPage == 0) {
 			$('#headline').hide();
 		} else {
 			$('#headline').show();
-		}
+		}*/
 	};
 	
 	/**
@@ -137,14 +139,23 @@ var Waker = new function() {
 	 * @param thePage url of the page to be loaded.
 	 */
 	var loadPage = function(thePage) {
-		// TODO: loading anim?
-		$('#toc').fadeOut();
+		showLoading(true);
 		
-		$.ajax({
-			url: Waker.CONTENT_FOLDER + thePage,
-			cache: false,
-			context: document.getElementById("page-content"),
-		}).success(pageLoaded).error(pageNotLoaded);
+		$('#content').fadeOut("fast", function() {
+			$.ajax({
+				url: Waker.CONTENT_FOLDER + thePage,
+				cache: false,
+				context: document.getElementById("content"),
+			}).success(pageLoaded).error(pageNotLoaded);			
+		});
+	};
+	
+	var showLoading = function(theStatus, theCallback) {
+		if(theStatus) {
+			$('#loading').fadeIn("fast", theCallback);
+		} else {
+			$('#loading').fadeOut("fast", theCallback);
+		}
 	};
 	
 	/**
@@ -236,7 +247,7 @@ var Waker = new function() {
 	 */
 	this.gotoPage = function(theNumber) {
 		var aRet = false;
-		
+
 		if(theNumber >= 0 && theNumber <= mPages.length - 1 && theNumber != mCurrentPage) {
 			mCurrentPage = theNumber;
 			loadPage(mPages[mCurrentPage].url);
