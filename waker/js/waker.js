@@ -107,12 +107,22 @@ var Waker = new function() {
 	 */
 	var pageLoaded = function(theData) {
 		$('#content').html(theData);
-		$('#content').fadeIn("fast");
+		parseCustomTags();
 		
+		$('#content').fadeIn("fast");
 		showLoading(false, Waker.closeToc);
 		updateNavBar();
 		
 		document.title = mPages[mCurrentPage].title;
+	};
+	
+	/**
+	 * TODO: write docs :)
+	 */
+	var parseCustomTags = function() {
+		// TODO: handle each tag appropriately.
+		$('#content w\\:end').html('<span class="end-mark">&diams;</span>');
+		$('#content w\\:qr').html('<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=Hello+world&chld=L|1&choe=UTF-8" title=""/>');
 	};
 	
 	/**
