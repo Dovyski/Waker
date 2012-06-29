@@ -275,7 +275,7 @@ var Waker = new function() {
 		
 		$('#toc-button').on('click', function() {
 			Waker.openToc();
-		});
+		}).fadeIn();
 	};
 	
 	/**
