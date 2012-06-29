@@ -23,6 +23,11 @@
 var Waker = new function() {
 	this.CONTENT_FOLDER = "./";
 	
+	this.config = {
+		'enableTouchGestures': 	false,	
+		'gestureOpenToc': 		'doubletap',  // It can be more than one, such as 'doubletap hold'.
+	};
+	
 	var mCurrentPage 	= 0;
 	var mLastViewedPage = 0;	
 	var mPages 			= [];
@@ -32,7 +37,7 @@ var Waker = new function() {
 	 * information loaded from "config.html".
 	 */
 	var buildTocPanel = function() {
-		var i, aToc = $("#toc");
+		var i, aToc = $('#toc');
 		
 		aToc.empty();
 		
@@ -278,6 +283,23 @@ var Waker = new function() {
 		}).fadeIn();
 	};
 	
+	var enableTouchGestures = function() {
+		$('#wrapper').on('swipe dragend ', function (theEvent) {
+			theEvent.preventDefault();
+			
+			if(theEvent.direction == "right") {
+				Waker.prevPage();
+			} else if(theEvent.direction == "left") {
+				Waker.nextPage();
+			}
+	    });
+		
+		$('#wrapper').on(Waker.config.gestureOpenToc, function (theEvent) {
+			theEvent.preventDefault();
+			Waker.openToc();
+	    });
+	};
+	
 	/**
 	 * Starts Waker, loading the pages meta data and displaying the cover page.
 	 */
@@ -285,9 +307,9 @@ var Waker = new function() {
 		createNavBar();
 		updateNavBar();
 		
-		// TODO: remove this debug lines!
-		//indexLoaded('<a href="cover.html" data-thumb="./img/cover/toc-thumb.jpg" title="Cover">Project logo</a><a href="dossier-01.html" data-thumb="./img/dossier-01/toc-thumb.jpg" title="Waker">Build HTML5 magazines.</a><a href="dossier-02.html" data-thumb="./img/dossier-02/toc-thumb.jpg" title="Pages">Create content.</a><a href="dossier-03.html" data-thumb="./img/dossier-03/toc-thumb.jpg" title="Organize">Columns and images.</a>');
-		//return;
+		if(Waker.config.enableTouchGestures) {
+			enableTouchGestures();
+		}
 		
 		$.ajax({
 			url: Waker.CONTENT_FOLDER + "config.html",
