@@ -40,7 +40,7 @@
     height: auto;
     margin: 0 auto;
     clear: both;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 .media-center {
 	text-align: center;
@@ -149,10 +149,3 @@ body {
 	padding: 0;
 	margin: 0;
 }
-/*
-.starting-headline {
-    width: 712px;
-    padding-top: 10px;
-    background-color: #fff;
-	clear:both;
-}*/
