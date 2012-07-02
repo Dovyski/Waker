@@ -31,6 +31,7 @@ var Waker = new function() {
 	var mCurrentPage 	= 0;
 	var mLastViewedPage = 0;	
 	var mPages 			= [];
+	var mSpinner		= null;
 
 	/**
 	 * Builds the toc panel (the one that slides from the left). The index is generated based on the
@@ -165,6 +166,27 @@ var Waker = new function() {
 	};
 	
 	var showLoading = function(theStatus, theCallback) {
+		if(mSpinner == null) {
+			var aOpts = {
+			  lines: 17, // The number of lines to draw
+			  length: 7, // The length of each line
+			  width: 2, // The line thickness
+			  radius: 10, // The radius of the inner circle
+			  rotate: 0, // The rotation offset
+			  color: '#000', // #rgb or #rrggbb
+			  speed: 1, // Rounds per second
+			  trail: 60, // Afterglow percentage
+			  shadow: false, // Whether to render a shadow
+			  hwaccel: false, // Whether to use hardware acceleration
+			  className: 'spinner', // The CSS class to assign to the spinner
+			  zIndex: 2e9, // The z-index (defaults to 2000000000)
+			  top: 'auto', // Top position relative to parent in px
+			  left: 'auto' // Left position relative to parent in px
+			};
+			var aTarget = document.getElementById('loading');
+			mSpinner = new Spinner(aOpts).spin(aTarget);	
+		}
+		
 		if(theStatus) {
 			$('#loading').fadeIn("fast", theCallback);
 		} else {

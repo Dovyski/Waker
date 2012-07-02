@@ -87,9 +87,9 @@
 	position: fixed;
 	right: 40%;
 	top: 40%;
-	width: 25%;
-	height: 20%;
-	background: #000;
+	width: 10%;
+	height: 10%;
+	background: transparent;
 	color: #fff;
 	text-align: right;
 	z-index: 999;
