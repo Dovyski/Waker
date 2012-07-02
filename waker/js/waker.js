@@ -121,8 +121,15 @@ var Waker = new function() {
 	 */
 	var parseCustomTags = function() {
 		// TODO: handle each tag appropriately.
+		// <w:end />
 		$('#content w\\:end').html('<span class="end-mark">&diams;</span>');
-		$('#content w\\:qr').html('<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=Hello+world&chld=L|1&choe=UTF-8" title=""/>');
+		
+		// <w:quote> content </w:quote>
+		$('#content w\\:quote').html('<blockquote><span class="quote-start">&#8220;</span>'+$('#content w\\:quote').html()+'<span class="quote-end">&#8221;</span></blockquote>');
+		
+		// <w:qr> url </w:qr>
+		// TODO: use standalone JS lib to generate code.
+		$('#content w\\:qr').html('<img src="https://chart.googleapis.com/chart?chs='+( $('#content w\\:qr').attr('width') || '100')+'x'+( $('#content w\\:qr').attr('height') || '100')+'&cht=qr&chl='+encodeURI($('#content w\\:qr').html())+'&chld=L|1&choe=UTF-8" title=""/>');
 	};
 	
 	/**

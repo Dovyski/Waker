@@ -103,20 +103,23 @@ blockquote {
 	width: 70%;
 	overflow: hidden;
 	padding: 20px;
+	font-size: 0.9em;
 }
 .quote-start {
 	font-family: 'PTSerifRegular';
 	float: left;
-	height: 45px;
+	height: 40px;
 	margin-top: -30px;
+	margin-left: -20px;
 	font-size: 700%;
 	color: #FF0000;
  }
  .quote-end {
  	font-family: 'PTSerifRegular';
 	position: absolute;
-	bottom: -90px;
+	bottom: 20px;
 	right: 10px;
 	font-size: 700%;
 	color: #FF0000;
+	height: 40px;
  }
