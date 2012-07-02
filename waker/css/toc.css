@@ -32,7 +32,7 @@
 .toc-thumb {
 	float: left;
 	width: 10%;
-	height: 10%;
+	height: auto;
 	margin: 5px;
 	border: #fff 2px solid;
 }
