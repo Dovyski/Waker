@@ -5,62 +5,67 @@ For more information, see dossier-01.html.
 
 -->
 
-<img src="./img/dossier-03/dossier-start-bg.jpg" class="img-headline" />
+<img src="./img/dossier-03/dossier-start-bg.jpg" class="media-headline" />
 
 <h1>Enhanced content</h1>
 
 <div class="full-column float-left">
-	<p>Waker has a set of pre-configured css classes that can be used to organize texts, images and columns. You can create a column using the following structure:</p>
+	<p>Waker has a set of custom tags that helps you create enhanced content such as styled blockquotes or embed QR codes. All custom tags are prefixed with <code>w:</code>, such as <code>&lt;w:end /&gt;</code>.</p>
+	<p>Below is a list and description of each Waker custom tag.</p>
+</div>
+
+<div class="medium-column float-left new-line">
+	<h2>Quotes</h2>
+	<p>If your text has a quote, you can use the <code>&lt;w:quote /&gt;</code> tag to display it. All text within that custom tags will be displayed between quote marks, inside a box.</p>
+	<p>The code below will produce the quotes on the right:</p>
+</div>
+
+<div class="medium-column float-right">
+	<w:quote>Look mom, some text surrounded by nice quote marks. Cool!</w:quote>
+	<w:quote>You can use can place your quote tags inside any column size.</w:quote>
+</div>
+
+<div class="full-column new-line">
 	<p>
 		<pre>
-		
-  &lt;div class="large-column float-left"&gt;
-      &lt;p&gt;Morbi semper ultrices porta. Aenean dignissim, sapien eget sodales.&lt;/p&gt;
-  &lt;/div&gt;
+  &lt;w:quote&gt; (text) &lt;/w:quote&gt;
 		</pre>
 	</p>
 </div>
 
-<div class="full-column float-left">
-	<img src="./img/dossier-03/image-ant.png" class="media-right" />
-	<p>There are three classes of columns: <code>full-column</code> (fill the entire page width), <code>large-column</code> and <code>small-column</code>. A <code>large-column</code> or a <code>small-column</code> can float left or right in the page since they don't fill it completly. In order to make a column float left or right, add the <code>float-left</code> or <code>float-right</code> classes.</p>
-	<p>Images can be positioned using the <code>media-right</code> and <code>media-left</code> classes. Those classes also resize the image to make it fit better into the page. If an image has no class, then it will be displayed as-is.</p>
-	
+
+<div class="full-column new-line">
+	<h2>QR Code</h2>
+	<p>Sometimes is useful to place a QR code in the text to help readers rich an URL using their mobile devices. If you want convert an URL into a QR code image, use the <code>&lt;w:qr /&gt;</code> custom tag.</p>
+	<p>The following code...</p>
 	<p>
 		<pre>
 		
-  &lt;img src="path/img.png" class="media-right" /&gt;
+  &lt;w:qr&gt;http://dovyski.github.com/Waker&lt;/w:qr&gt;
 		</pre>
 	</p>
-	
-	<p>The following texts demonstrates the positioning classes.</p>
-</div>
-
-<div class="large-column float-left new-line">
-	<h2>Quotes</h2>
-	<p>Nice text explaning how to use quoted text and stuff.<br />Morbi semper ultrices porta. Aenean dignissim, sapien eget sodales mollis, massa urna malesuada elit, sit amet vulputate justo augue in massa. Praesent mattis accumsan blandit. Mauris nec enim ante. Sed fringilla interdum eros, nec lacinia turpis iaculis vel. Vestibulum leo ipsum, consequat a dignissim sit amet, egestas in urna. Donec nisl velit, pulvinar id ullamcorper vitae, imperdiet et leo. Donec ultricies cursus varius. Pellentesque elit arcu, pulvinar in fermentum non, faucibus eu quam. Suspendisse mollis aliquam sagittis. Vestibulum pellentesque accumsan arcu, vitae mattis tellus luctus id. Vivamus sed condimentum leo.</p>
-</div>
-
-
-<div class="large-column float-left new-line">
-	<h2>Quotes</h2>
-	<p>Nice text explaning how to use quoted text and stuff.<br />Morbi semper ultrices porta. Aenean dignissim, sapien eget sodales mollis, massa urna malesuada elit, sit amet vulputate justo augue in massa. Praesent mattis accumsan blandit. Mauris nec enim ante. Sed fringilla interdum eros, nec lacinia turpis iaculis vel. Vestibulum leo ipsum, consequat a dignissim sit amet, egestas in urna. Donec nisl velit, pulvinar id ullamcorper vitae, imperdiet et leo. Donec ultricies cursus varius. Pellentesque elit arcu, pulvinar in fermentum non, faucibus eu quam. Suspendisse mollis aliquam sagittis. Vestibulum pellentesque accumsan arcu, vitae mattis tellus luctus id. Vivamus sed condimentum leo.</p>
-	<p><w:qr width="200" height="200">http://dovyski.github.com/Waker</w:qr></p>
-</div>
-
-<div class="small-column float-right">
-	<blockquote>
-		<span class="quote-start">&#8220;</span>
-		Speech marks. Curly quotes. That annoying thing cool people do with their fingers to emphasize a buzzword, shortly before you hit them.
-		<span class="quote-end">&#8221;</span>
-	</blockquote>
-	<w:quote>Is it working? It would be great if it is.</w:quote>
-</div>
-
-<div class="small-column float-right">
-	<blockquote>
-		<span class="quote-start">&#8220;</span>
-		Speech marks. Curly quotes. That annoying thing cool people do with their fingers to emphasize a buzzword, shortly before you hit them.
-		<span class="quote-end">&#8221;</span>
-	</blockquote>
+	<p>...will produce this image:</p>
+	<p style="text-align: center;"><w:qr width="200" height="200">http://dovyski.github.com/Waker</w:qr></p>
+	<p>You can adjust the width and height of the QR image using the <code>width</code> and <code>height</code> atrributes, the same way you use them to adjust the size of an <code>&lt;img /&gt;</code> tag. E.g.:</p> 
+	<p>
+		<pre>
+		
+  &lt;w:qr width="300" height="300"&gt; (...) &lt;/w:qr&gt;
+		</pre>
+	</p>
 </div>	
+
+<div class="full-column new-line">
+	<h2>End mark</h2>
+	<p>Several magazines use a special mark at the end of an article to indicate the end of that content. It is useful when an article uses several pages of the magazine and the author must instruct the reader to keep reading.</p>
+	<p>Waker has the <code>&lt;w:end /&gt;</code> custom tag which is replaced by a special sign that indicates the end of the current article.</p>
+	<p>The following code show how to use the custom tag:</p>
+	<p>
+		<pre>
+		
+  &lt;p&gt; This is the last paragraph of an article. &lt;w:end/&gt; &lt;/p&gt;
+		</pre>
+	</p>
+	<p>It will produce the following result: </p>
+	<p>This is the last paragraph of an article. <w:end/></p>
+</div>

@@ -5,7 +5,7 @@ For more information, see dossier-01.html.
 
 -->
 
-<img src="./img/dossier-03/dossier-start-bg.jpg" class="img-headline" />
+<img src="./img/dossier-03/dossier-start-bg.jpg" class="media-headline" />
 
 <h1>Columns and images</h1>
 
@@ -15,16 +15,16 @@ For more information, see dossier-01.html.
 		<pre>
 		
   &lt;div class="large-column float-left"&gt;
-      &lt;p&gt;Morbi semper ultrices porta. Aenean dignissim, sapien eget sodales.&lt;/p&gt;
+      &lt;p&gt; (...) &lt;/p&gt;
   &lt;/div&gt;
 		</pre>
 	</p>
 </div>
 
-<div class="full-column float-left">
+<div class="full-column">
 	<img src="./img/dossier-03/image-ant.png" class="media-right" />
-	<p>There are three classes of columns: <code>full-column</code> (fill the entire page width), <code>large-column</code> and <code>small-column</code>. A <code>large-column</code> or a <code>small-column</code> can float left or right in the page since they don't fill it completly. In order to make a column float left or right, add the <code>float-left</code> or <code>float-right</code> classes.</p>
-	<p>Images can be positioned using the <code>media-right</code> and <code>media-left</code> classes. Those classes also resize the image to make it fit better into the page. If an image has no class, then it will be displayed as-is.</p>
+	<p>There are four classes of columns: <code>full-column</code> (fill the entire page width), <code>large-column</code>, <code>medium-column</code> and <code>small-column</code>. Excluding the <code>full-column</code> all other columns can float left or right in the page since they don't fill it completly. In order to make a column float left or right, add the <code>float-left</code> or <code>float-right</code> classes.</p>
+	<p>Images can be positioned using the <code>media-right</code>, <code>media-left</code>, <code>media-center</code> and <code>media-headline</code> classes. Those classes also resize the image to make it fit better into the page. If an image has no class, then it will be displayed as-is.</p>
 	
 	<p>
 		<pre>
@@ -33,8 +33,21 @@ For more information, see dossier-01.html.
 		</pre>
 	</p>
 	
-	<p>The following texts demonstrates the positioning classes.</p>
+	<p>The following sections demonstrate the positioning classes.</p>
 </div>
+
+<div class="large-column new-line">
+	<h2>Image demonstration</h2>
+</div>
+
+<div class="full-column">
+	<img src="./img/dossier-03/image-ant.png" class="media-left" />
+	<p>The image at the beginning of this dossier (the big orange one) has the <code>media-headline</code> class in action. It makes the image fill completly the page, adjusting its size to fit the area.</p>
+	<p>The image of an ant featured above has the <code>media-right</code> class in action, so it will float to the right of the page. Its size will be adjusted to fit the page. The image on the left of this text has the <code>media-left</code> class.</p>
+	<p>The image below has the <code>media-center</code> class in action, which will make it adjust its size to fill almost all page content.</p>
+	<img src="./img/dossier-03/image-ant.png" class="media-center" />
+</div>
+
 
 <div class="large-column new-line">
 	<h2>Columns demonstration</h2>

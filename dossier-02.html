@@ -5,16 +5,14 @@ For more information, see dossier-01.html.
 
 -->
  
-<img src="./img/dossier-02/dossier-start-bg.jpg" class="img-headline" />
+<img src="./img/dossier-02/dossier-start-bg.jpg" class="media-headline" />
 
 <h1>How to create content pages</h1>
 
 <div class="full-column float-right">
-	<div class="media-left">
-		<img src="./img/dossier-02/image-bracket.jpg" />
-	</div>
+	<img src="./img/dossier-02/image-bracket.jpg" class="media-left"/>
 	<p>
-		Waker is composed of two html files and some javascript/css/images used to load and organize the content. A vanilla installation of Waker has the following structure:
+		Waker is composed of two html files and some javascript/css used to load and organize the content. A vanilla installation of Waker has the following structure:
 		
 		<ul>
 			<li><code>waker/</code></li>
@@ -28,15 +26,13 @@ For more information, see dossier-01.html.
 
 <div class="full-column float-left">
 	<p>You are free to use any html/css/javascript knowledge you have, but bear in mind that the content will be loaded into a div.</p>
-	<p>Every content page can feature one <strong>headline image</strong>, which is displayed at the beginning of the content. In order to specify a headline image, just add a common <code>&lt;img&gt;</code> tag with the class <code>img-headline</code>. E.g.</p>
-	<p><code>&lt;a href="dossier-01.html" data-thumb="path/thumb.jpg" title="Page title"&gt;Shot description.&lt;/a&gt;</code></p>
-	<p>All other texts in the page can be wrapped by a <code>&lt;p&gt;</code> or a <code>&lt;div&gt;</code> tags as the following structure:</p>
+	<p>All texts in the page can be wrapped by a <code>&lt;p&gt;</code> or a <code>&lt;div&gt;</code> tags as the following structure:</p>
 	<p>
 		<pre>
 		
   &lt;div class="large-column float-left"&gt;
-      &lt;p&gt;Morbi semper ultrices porta. Aenean dignissim, sapien eget sodales.&lt;/p&gt;
-      &lt;p&gt;Donec molestie dui et nisl posuere volutpat rhoncus mauris porta.&lt;/p&gt;
+      &lt;p&gt; ( ... ) &lt;/p&gt;
+      &lt;p&gt; ( ... ) &lt;/p&gt;
   &lt;/div&gt;
 		</pre>
 	</p>
@@ -62,11 +58,11 @@ For more information, see dossier-01.html.
 
 	<ul>
 		<li><code>href</code> tells where the page is. In order to avoid any problems with image/css links, the better place to add your page file is in the same directory <code>config.html</code> and <code>index.html</code> are;</li>
-		<li><code>data-thumb</code> is the path to a <code>100x100 px</code> image that will be used as the page thumbnail in the index (the one that appears when the user clicks the index icon, at the upper right corner of the page);</li>
+		<li><code>data-thumb</code> is the path to a <code>100x100 px</code> image that will be used as the page thumbnail in the index (the one that appears when the user clicks the index icon);</li>
 		<li><code>title</code> is the title displayed in the index and also in the browser window.</li>
 	</ul>
 
 	<p>The content of the <code>&lt;a&gt;</code> tag (text between <code>&lt;a&gt;</code> and <code>&lt;/a&gt;</code>) will be used as a short description of the page. This text is displayed below the page title in the index.</p>
 
-	<p>The page of the first link listed in <code>config.html</code> will be used as the <strong>cover page</strong> (first page of the magazine).<w:end /></p>
+	<p>The page of the first link listed in <code>config.html</code> will be used as the <strong>cover page</strong> (first page of the magazine).</p>
 </div>

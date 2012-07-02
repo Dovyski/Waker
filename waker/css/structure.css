@@ -44,7 +44,7 @@
 }
 .media-center {
 	text-align: center;
-    width: 100%;
+    width: 85%;
     margin: 0 auto;
     clear: both;
 }
@@ -78,7 +78,7 @@
 }
 #content {
 	padding-top: 10px;
-	width: 96%;
+	width: 95%;
 	height: 100%;
 	margin: 0 auto;
 	overflow: hidden;
