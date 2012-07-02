@@ -121,16 +121,19 @@ var Waker = new function() {
 	 * TODO: write docs :)
 	 */
 	var parseCustomTags = function() {
-		// TODO: handle each tag appropriately.
 		// <w:end />
 		$('#content w\\:end').html('<span class="end-mark">&diams;</span>');
 		
 		// <w:quote> content </w:quote>
-		$('#content w\\:quote').html('<blockquote><span class="quote-start">&#8220;</span>'+$('#content w\\:quote').html()+'<span class="quote-end">&#8221;</span></blockquote>');
+		$("#content w\\:quote").each(function(theIndex, theValue) { 
+		    $(this).html('<blockquote><span class="quote-start">&#8220;</span>'+$(this).html()+'<span class="quote-end">&#8221;</span></blockquote>');
+		});
 		
 		// <w:qr> url </w:qr>
 		// TODO: use standalone JS lib to generate code.
-		$('#content w\\:qr').html('<img src="https://chart.googleapis.com/chart?chs='+( $('#content w\\:qr').attr('width') || '100')+'x'+( $('#content w\\:qr').attr('height') || '100')+'&cht=qr&chl='+encodeURI($('#content w\\:qr').html())+'&chld=L|1&choe=UTF-8" title=""/>');
+		$("#content w\\:qr").each(function(theIndex, theValue) {
+			$(this).html('<img src="https://chart.googleapis.com/chart?chs='+( $(this).attr('width') || '100')+'x'+( $(this).attr('height') || '100')+'&cht=qr&chl='+encodeURI($(this).html())+'&chld=L|1&choe=UTF-8" title=""/>');
+		});
 	};
 	
 	/**
